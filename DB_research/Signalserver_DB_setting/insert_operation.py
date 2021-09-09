@@ -27,7 +27,8 @@ create table operation (
     start_date timestamp,
     end_date timestamp,
     location_id int not null,
-    foreign key(location_id) references location(id)
+    foreign key(location_id) references location(id),
+    index time_idx (start_date,end_date)
 );
 """
 test_cursor.execute(create_sql)

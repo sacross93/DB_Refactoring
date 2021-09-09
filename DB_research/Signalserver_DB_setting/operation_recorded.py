@@ -9,4 +9,14 @@ test_db = pymysql.connect(
 )
 test_DB_cursor = test_db.cursor(pymysql.cursors.DictCursor)
 
-aa
+create_sql = \
+"""
+create table operation_recorded (
+	operation_id int primary key,
+	filerecorded_ic int primary key,
+    foreign key(operation_id) references operation(id),
+    foreign key(filerecorded_ic) references filerecorded(id)
+);
+"""
+
+

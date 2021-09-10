@@ -24,8 +24,13 @@ test_DB_cursor = test_db.cursor(pymysql.cursors.DictCursor)
 # );
 # """
 
+sql = \
+"""
+select *
+from sa_api_bed_status_record;
+"""
 
-##good
-##check
+test_DB_cursor.execute(sql)
+status_list = pd.DataFrame(test_DB_cursor.fetchall())
 
-
+status_list

@@ -10,11 +10,17 @@ test_db = pymysql.connect(
 )
 test_DB_cursor = test_db.cursor(pymysql.cursors.DictCursor)
 
-create_sql = \
-"""
-create table location_status_record(
-    id int primary key auto_increment
-    date timestatmp not null,
-    location_id int not null,
-    status int not null
-"""
+# create_sql = \
+# """
+# create table location_status_record
+# (
+#     id          int primary key auto_increment,
+#     date        timestamp not null,
+#     location_id int       not null,
+#     status      int       not null,
+#     foreign key (location_id) references location (id),
+#     foreign key (status) references status (id),
+#     index time_idx (date)
+# );
+# """
+

@@ -1,4 +1,5 @@
 import pymysql
+import pandas as pd
 
 test_db = pymysql.connect(
     user='wlsdud022',
@@ -11,13 +12,15 @@ test_DB_cursor = test_db.cursor(pymysql.cursors.DictCursor)
 
 create_sql = \
 """
-create table operation_recorded (
-	operation_id int primary key,
-	filerecorded_ic int primary key,
-    foreign key(operation_id) references operation(id),
-    foreign key(filerecorded_ic) references filerecorded(id)
-    record_percentage int
-);
+create table legacy_location_status(
+    id int primary key auto_increment,
+    location_id int not null,
+    status 
 """
 
 
+sql = \
+"""
+select *
+from 
+"""

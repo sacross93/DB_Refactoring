@@ -52,7 +52,8 @@ for i,j,k in zip(status_list['date'],status_list['bed'],status_list['status']) :
         status=3
     insert_sql= \
     f"""
-    insert into location_status_record (date,location_id,status)
+    insert into location_status_record (date,location_id,status_id)
     values ('{i}',{bed_id[0]['id']},{status})
     """
     test_DB_cursor.execute(insert_sql)
+test_db.commit()

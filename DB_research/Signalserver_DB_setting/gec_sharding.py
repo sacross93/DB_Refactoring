@@ -118,6 +118,13 @@ for i in file_list['id'] :
     #     break
     # break
 
+
+for x in range(len(file_list['id'])) :
+    if file_list['id'][i] == 52453 :
+        print(i)
+        break
+
+
 #test
 value_sql
 test = value_sql.split(',')

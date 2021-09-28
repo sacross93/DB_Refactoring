@@ -55,8 +55,12 @@ test_DB_cursor.execute(file_sql)
 file_list = pd.DataFrame(test_DB_cursor.fetchall())
 
 
-# cnt=0
+
+cnt=0
 for i in file_list['id'] :
+    cnt += 1
+    if cnt < 29602 :
+        continue
     gec_data = \
     f"""
     select *
@@ -119,9 +123,10 @@ for i in file_list['id'] :
     # break
 
 
+
 for x in range(len(file_list['id'])) :
-    if file_list['id'][i] == 52453 :
-        print(i)
+    if file_list['id'][x] == 52453 :
+        print(x)
         break
 
 

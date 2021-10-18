@@ -20,19 +20,19 @@ conn = pymysql.connect(
 )
 test_cursor = conn.cursor(pymysql.cursors.DictCursor)
 
-create_sql = \
-"""
-create table operation (
-	id int auto_increment primary key not null,
-    start_date timestamp,
-    end_date timestamp,
-    location_id int not null,
-    foreign key(location_id) references location(id),
-    index time_idx (start_date,end_date)
-);
-"""
-test_cursor.execute(create_sql)
-conn.commit()
+# create_sql = \
+# """
+# create table operation (
+# 	id int auto_increment primary key not null,
+#     start_date timestamp,
+#     end_date timestamp,
+#     location_id int not null,
+#     foreign key(location_id) references location(id),
+#     index time_idx (start_date,end_date)
+# );
+# """
+# test_cursor.execute(create_sql)
+# conn.commit()
 
 op_path = "/srv/data/operation_storage/"
 op_name = os.listdir(op_path)

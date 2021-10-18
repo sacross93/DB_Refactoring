@@ -68,4 +68,8 @@ for i in oper_excel_list :
     mysql.commit()
 
 
+for i in oper_excel_list :
+    os.remove(oper_path+i)
+
+
 ## test

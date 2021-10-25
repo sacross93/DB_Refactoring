@@ -35,13 +35,13 @@ for i in oper_excel_list :
     except :
         operation_list = operation_list.drop(['RP_마취통증의학과-021.수술 실적 보고서_마취통증의학과', 'Unnamed: 2'], axis='columns')
     operation_list.columns = ['op_room', 'start_date', 'end_date']
-    print(len(operation_list))
+    # print(len(operation_list))
     operation_list['op_room'] = operation_list['op_room'].fillna(method='pad')
     operation_list = operation_list[(operation_list['start_date'].isnull() != True) & (operation_list['end_date'].isnull() != True) & (operation_list['op_room'] != '수술실코드')].reset_index(drop=False)
-    print(len(operation_list))
+    # print(len(operation_list))
     operation_list['op_room'] = operation_list['op_room'].str.slice_replace(start=1,stop=1,repl='-')
     operation_list = operation_list[operation_list['start_date'] != '_']
-    print(len(operation_list))
+    # print(len(operation_list))
 
     operation_list['start_date'] = pd.to_datetime(operation_list['start_date'])
     operation_list['end_date'] = pd.to_datetime(operation_list['end_date'])
@@ -63,7 +63,6 @@ for i in oper_excel_list :
         if cursor.execute(sql) != 0:
             temp_bed_id = cursor.fetchall()
             values_sql = f"""values ('{k}','{l}',{temp_bed_id[0]['id']})"""
-            # print(i,j,k)
             cursor.execute(insert_sql + values_sql)
     mysql.commit()
 

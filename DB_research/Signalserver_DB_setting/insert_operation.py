@@ -28,7 +28,8 @@ test_cursor = conn.cursor(pymysql.cursors.DictCursor)
 #     end_date timestamp,
 #     location_id int not null,
 #     foreign key(location_id) references location(id),
-#     index time_idx (start_date,end_date)
+#     index time_idx (start_date,end_date),
+#     unique key uk_operation (start_date,end_date,location_id)
 # );
 # """
 # test_cursor.execute(create_sql)

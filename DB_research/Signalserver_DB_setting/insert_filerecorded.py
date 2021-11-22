@@ -69,5 +69,5 @@ conn.commit()
 
 
 for i in range(50000) :
-    delete_sql = f"""delete from filerecorded where id={i}"""
+    delete_sql = f"""delete from filerecorded where id={i};"""
     test_cursor.execute(delete_sql)

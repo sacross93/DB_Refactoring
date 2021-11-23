@@ -20,5 +20,7 @@ for uid in UIDs :
             file = open("/home/projects/pcg_transform/Operation_data/operation_list/"+mp.filename,"wb")
             file.write(mp.get_payload())
             file.close()
+            m.delete_messages(uid)
+            m.expunge()
 
 

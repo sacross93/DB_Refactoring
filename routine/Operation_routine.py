@@ -21,7 +21,7 @@ def dir_empty(dir_path):
 mysql,cursor = test_dbIn()
 
 oper_path = "/home/projects/pcg_transform/Operation_data/operation_list/"
-save_path = "/srv/data/operation_storage/"
+save_path = "/srv/operation_storage/"
 
 if dir_empty(oper_path) == True :
     sys.exit()

@@ -1,43 +1,43 @@
-import zAI
-from zAI import zImage
 import os
-import tensorflow as tf
 from PIL import Image
+import matplotlib.pylab as plt
 import cv2
+import random
 
 address = "/home/projects/pcg_transform/Meeting/jy/"
 file_list = os.listdir(address)
 
+for k in range(1000) :
+    test_img = Image.open(address+"joke.png")
+    test_img = test_img.resize((600,600))
 
-def get_zai_dir():
-    '''
-    Work out where to store configuration and model files locally
-    '''
-    _zAI_base_dir = os.path.expanduser(address)
+    rgb_result = []
+    for i in range(0,test_img.size[0]):
+        temp = (random.randrange(0,256),random.randrange(0,256),random.randrange(0,256))
+        for j in range(0,test_img.size[1]):
+            rgb = test_img.getpixel((i,j))
+            rgb_a = temp
+            test_img.putpixel((i, j), rgb_a)
 
-    if not os.access(_zAI_base_dir, os.W_OK):
-        _zAI_base_dir = '/temp'
+    for i in range(test_img.size[0]) :
+        select_vr = random.randrange(0,2)
+        select_re = random.randrange(0,2)
+        temp = (random.randrange(0, 256), random.randrange(0, 256), random.randrange(0, 256))
+        for j in range(test_img.size[1]) :
+            rgb_a = temp
+            if select_vr == 0 :
+                if select_re == 0 :
+                    test_img.putpixel((i,j),rgb_a)
+                else :
+                    test_img.putpixel((test_img.size[0]-i-1, j), rgb_a)
+            else :
+                if select_re == 0 :
+                    test_img.putpixel((j,i),rgb_a)
+                else :
+                    test_img.putpixel((test_img.size[1]-j-1, i), rgb_a)
 
-    _zAI_dir = os.path.join(_zAI_base_dir, '.zAI')
+    # plt.imshow(test_img)
+    # plt.show()
+    test_img.save(f"/home/projects/pcg_transform/Meeting/jy/img_test/test_img_{k}.png")
 
-    return _zAI_dir
-
-print(get_zai_dir())
-
-woohyun = zImage(address+"joke.png")
-# img = Image.open(address+'joke.png')
-# img.show()
-# img_resize = img.resize((350,350),Image.LANCZOS)
-# img_resize.save(address+'joke2.png')
-# img_resize.show()
-
-
-woohyun.find_faces()
-woohyunPhto = woohyun.extract_face(margin=15)
-woohyunPhto.display()
-woohyun.display()
-
-test_img = cv2.imread(address+"joke.png",cv2.IMREAD_COLOR)
-cv2.namedWindow('test title')
-cv2.imshow('test title',test_img)
-cv2.waitKey(0)
+test_img.size[1]-j+1

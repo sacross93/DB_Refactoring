@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pymysql
 from multiprocessing import *
+import sys
+
 
 operation_file = pd.read_excel('/home/projects/pcg_transform/Meeting/jy/operation_file_ver3.xlsx',engine='openpyxl')
 

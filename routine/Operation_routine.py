@@ -56,7 +56,7 @@ for i in oper_excel_list :
 
     insert_sql = \
         """
-        insert into operation (start_date,end_date,location_id) 
+        insert ignore into operation (start_date,end_date,location_id) 
         """
 
     for j, k, l in zip(operation_list['op_room'], operation_list['start_date'], operation_list['end_date']):

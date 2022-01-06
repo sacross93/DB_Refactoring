@@ -2,6 +2,7 @@ import pymysql
 import pandas as pd
 import os
 import sys
+import warnings
 
 def test_dbIn() :
     conn = pymysql.connect(
@@ -29,8 +30,10 @@ if dir_empty(oper_path) == True :
 oper_excel_list = os.listdir(oper_path)
 
 for i in oper_excel_list :
-    # operation_list = pd.read_excel(oper_path+i,engine='openpyxl')
-    operation_list = pd.read_excel(oper_path + i)
+    with warnings.catch_warnings(record=True) :
+        warnings.simplefilter("always")
+        operation_list = pd.read_excel(oper_path+i,engine='openpyxl')
+    # operation_list = pd.read_excel(oper_path + i)
     try :
         operation_list = operation_list.drop(['RP_마취통증의학과-021.마취통증의학과_수술 실적 보고서','Unnamed: 2'],axis='columns')
     except :

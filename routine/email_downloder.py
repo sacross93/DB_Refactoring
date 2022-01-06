@@ -4,7 +4,7 @@ import pyzmail
 m = imapclient.IMAPClient("imap.gmail.com",ssl=True)
 m.login("jinyoungkim0308@gmail.com","@wlsud890312")
 mailbox = m.select_folder("INBOX")
-UIDs = m.search(["FROM","tmdal980@gmail.com"])
+UIDs = m.search(["FROM","jyj6228smile@naver.com"])
 
 for uid in UIDs :
     raw_msg = m.fetch(uid,['BODY[]'])

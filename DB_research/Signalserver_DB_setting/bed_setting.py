@@ -13,14 +13,14 @@ conn = pymysql.connect(
     user='wlsdud022',
     passwd='wlsdud022',
     host='192.168.134.193',
-    db='test_sa_server',
+    db='SignalHouse',
     charset='utf8'
 )
 test_cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 # create_sql = \
 # """
-# create table bed (
+# create table location (
 # 	id int auto_increment primary key not null,
 #     name varchar(16) not null,
 #     type int not null
@@ -39,12 +39,12 @@ for i in bed_info :
     bed_name.append(i['name'])
     bed_type.append(i['bed_type'])
 
-# for i,j in zip(bed_name,bed_type) :
-#     insert_sql = \
-#     f"""
-#     insert into bed (name,type)
-#         values ('{i}',{j});
-#     """
-#     test_cursor.execute(insert_sql)
-# conn.commit()
+for i,j in zip(bed_name,bed_type) :
+    insert_sql = \
+    f"""
+    insert into bed (name,type)
+        values ('{i}',{j});
+    """
+    test_cursor.execute(insert_sql)
+conn.commit()
 #a

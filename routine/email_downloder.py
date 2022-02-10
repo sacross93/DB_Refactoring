@@ -22,5 +22,3 @@ for uid in UIDs :
             file.close()
             m.delete_messages(uid)
             m.expunge()
-
-

@@ -7,4 +7,6 @@ conn = pymysql.connect(
 )
 create_cursor = conn.cursor()
 
-# create_cursor("create database SignalHouse;")
+create_cursor.execute("create database SignalHouse;")
+
+conn.commit()

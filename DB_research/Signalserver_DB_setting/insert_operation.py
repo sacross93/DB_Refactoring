@@ -58,16 +58,3 @@ for i,j,k in zip(op_list['op_room'],op_list['start_date'],op_list['end_date']) :
         # print(i,j,k)
         test_cursor.execute(insert_sql + values_sql)
 conn.commit()
-
-
-
-
-## test
-# op_list['op_room'].str.findall(pat='[0-9]')
-# op_list['op_room'].str.get(i=0)
-# op_list['op_room']=op_list['op_room'].str.slice_replace(start=1,stop=1,repl='-')
-# op_list['op_room']
-# insert_sql+values_sql
-# test_cursor.execute(insert_sql+values_sql)
-# conn.commit()
-# conn.rollback()

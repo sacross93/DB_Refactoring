@@ -42,7 +42,7 @@ for i in bed_info :
 for i,j in zip(bed_name,bed_type) :
     insert_sql = \
     f"""
-    insert into bed (name,type)
+    insert into location (name,type)
         values ('{i}',{j});
     """
     test_cursor.execute(insert_sql)

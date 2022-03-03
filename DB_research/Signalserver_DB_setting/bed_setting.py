@@ -14,7 +14,8 @@ conn = pymysql.connect(
     passwd='wlsdud022',
     host='192.168.134.193',
     db='SignalHouse',
-    charset='utf8'
+    charset='utf8',
+    port=3307
 )
 test_cursor = conn.cursor(pymysql.cursors.DictCursor)
 

@@ -28,7 +28,8 @@ file_list = os.listdir(address)
 
 for file in file_list :
 
-    operation_list = pd.read_excel(address+file,engine='openpyxl')
+    try : operation_list = pd.read_excel(address+file,engine='openpyxl')
+    except : continue
 
     insert_sql = \
         """
@@ -42,4 +43,3 @@ for file in file_list :
             values_sql = f"""values ('{k}','{l}',{temp_bed_id[0]['id']})"""
             cursor.execute(insert_sql + values_sql)
     mysql.commit()
-
